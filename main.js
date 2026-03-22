@@ -11,7 +11,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  if (num1 === 0 || num2 === 0) return 'ERROR'
+  if (num2 === 0) return 'ERROR'
   return num1 / num2
 }
 
@@ -70,5 +70,15 @@ document.addEventListener('click', (e) => {
     secondOperand = ''
     operator = e.target.textContent
     elements.operatorDisplay.textContent = operator
+  }
+
+  if (e.target.classList.contains('clear')) {
+    firstOperand = ''
+    secondOperand = ''
+    operator = undefined
+
+    elements.firstNumDisplay.textContent = ''
+    elements.secondNumDisplay.textContent = ''
+    elements.operatorDisplay.textContent = ''
   }
 })
