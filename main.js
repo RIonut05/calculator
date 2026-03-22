@@ -21,10 +21,10 @@ let operator = undefined
 
 function operate(op, firstNum, secondNum) {
   switch (op) {
-    case '+': return add(parseInt(firstNum), parseInt(secondNum))
-    case '-': return subtract(parseInt(firstNum), parseInt(secondNum))
-    case 'x': return multiply(parseInt(firstNum), parseInt(secondNum))
-    case '÷': return divide(parseInt(firstNum), parseInt(secondNum))
+    case '+': return add(parseFloat(firstNum), parseFloat(secondNum))
+    case '-': return subtract(parseFloat(firstNum), parseFloat(secondNum))
+    case 'x': return multiply(parseFloat(firstNum), parseFloat(secondNum))
+    case '÷': return divide(parseFloat(firstNum), parseFloat(secondNum))
   }
 }
 
@@ -35,7 +35,7 @@ const elements = {
 }
 
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('operator') && operator === undefined) {
+  if (e.target.classList.contains('operator') && operator === undefined && firstOperand !== '') {
     operator = e.target.textContent
     elements.operatorDisplay.textContent = operator
   }
@@ -80,5 +80,17 @@ document.addEventListener('click', (e) => {
     elements.firstNumDisplay.textContent = ''
     elements.secondNumDisplay.textContent = ''
     elements.operatorDisplay.textContent = ''
+  }
+
+  if (e.target.classList.contains('point')) {
+    if (secondOperand === '') {
+      firstOperand += '.'
+      elements.firstNumDisplay.textContent = firstOperand
+    }
+
+    if (secondOperand !== '') {
+      secondOperand += '.'
+      elements.secondNumDisplay.textContent = secondOperand
+    }
   }
 })
